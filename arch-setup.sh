@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
-set -e
+set -euo pipefail
 
 echo "==> Updating system..."
 sudo pacman -Syu --noconfirm
 
 echo "==> Installing packages..."
+
 # --- Hyprland / Wayland ---
 sudo pacman -S --needed --noconfirm \
     hyprland \
@@ -46,6 +47,11 @@ sudo pacman -S --needed --noconfirm \
     networkmanager \
     network-manager-applet
 
+# --- Proton VPN ---
+sudo pacman -S --needed --noconfirm \
+    proton-vpn-cli \
+    gnome-keyring
+
 # --- Bluetooth ---
 sudo pacman -S --needed --noconfirm \
     bluez \
@@ -59,6 +65,10 @@ sudo pacman -S --needed --noconfirm \
 # --- File Synchronization ---
 sudo pacman -S --needed --noconfirm \
     syncthing
+
+# --- Browser ---
+sudo pacman -S --needed --noconfirm \
+    firefox
 
 # --- Virtualization / QEMU-KVM ---
 sudo pacman -S --needed --noconfirm \
@@ -93,8 +103,21 @@ ln -sfn "$HOME/.dotfiles/fastfetch" "$HOME/.config/fastfetch"
 ln -sfn "$HOME/.dotfiles/bash/.bashrc" "$HOME/.bashrc"
 ln -sfn "$HOME/.dotfiles/vim/.vimrc" "$HOME/.vimrc"
 
-echo "==> Arch setup complete!"
-echo "==> Rebooting to apply group membership and system changes..." 
-sleep 3 
+echo "==> Installing vim-plug..."
+if [ ! -f "$HOME/.vim/autoload/plug.vim" ]; then
+    curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
+
+echo "==> Installing Vim plugins..."
+vim +PlugInstall +qall
+
+echo
+echo "======================================"
+echo "   Arch Linux setup complete!"
+echo "======================================"
+echo
+echo "Rebooting in 3 seconds..."
+sleep 3
 sudo reboot
 
