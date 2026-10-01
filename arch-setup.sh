@@ -29,7 +29,14 @@ sudo pacman -S --needed --noconfirm \
 # --- Terminal / Fonts ---
 sudo pacman -S --needed --noconfirm \
     kitty \
-    ttf-hack
+    ttf-hack \
+    terminus-font
+
+echo "==> Configuring TTY font..."
+
+sudo tee /etc/vconsole.conf > /dev/null <<EOF
+FONT=ter-v32b
+EOF
 
 # --- CLI / Development ---
 sudo pacman -S --needed --noconfirm \
@@ -40,7 +47,9 @@ sudo pacman -S --needed --noconfirm \
     git \
     unzip \
     wget \
-    curl
+    curl \
+    man-db \
+    man-pages
 
 # --- Networking ---
 sudo pacman -S --needed --noconfirm \
@@ -51,6 +60,10 @@ sudo pacman -S --needed --noconfirm \
 sudo pacman -S --needed --noconfirm \
     proton-vpn-cli \
     gnome-keyring
+
+# --- Password Manager ---
+sudo pacman -S --needed --noconfirm \
+    keepassxc
 
 # --- Bluetooth ---
 sudo pacman -S --needed --noconfirm \
@@ -69,6 +82,10 @@ sudo pacman -S --needed --noconfirm \
 # --- Browser ---
 sudo pacman -S --needed --noconfirm \
     firefox
+
+# --- Image Viewer ---
+sudo pacman -S --needed --noconfirm \
+    swayimg
 
 # --- Virtualization / QEMU-KVM ---
 sudo pacman -S --needed --noconfirm \
