@@ -24,7 +24,8 @@ sudo pacman -S --needed --noconfirm \
 sudo pacman -S --needed --noconfirm \
     pipewire \
     pipewire-pulse \
-    wireplumber
+    wireplumber \
+    spotify-launcher
 
 # --- Terminal / Fonts ---
 sudo pacman -S --needed --noconfirm \
@@ -49,7 +50,8 @@ sudo pacman -S --needed --noconfirm \
     wget \
     curl \
     man-db \
-    man-pages
+    man-pages \
+    tree
 
 # --- Networking ---
 sudo pacman -S --needed --noconfirm \
