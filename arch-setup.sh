@@ -18,7 +18,8 @@ sudo pacman -S --needed --noconfirm \
     brightnessctl \
     xdg-desktop-portal-hyprland \
     xdg-desktop-portal-gtk \
-    wl-clipboard
+    wl-clipboard \
+    waybar
 
 # --- Audio ---
 sudo pacman -S --needed --noconfirm \
@@ -62,6 +63,10 @@ sudo pacman -S --needed --noconfirm \
 sudo pacman -S --needed --noconfirm \
     proton-vpn-cli \
     gnome-keyring
+
+# --- Torrenting Client ---
+sudo pacman -S --needed --noconfirm \
+    qbittorrent
 
 # --- Password Manager ---
 sudo pacman -S --needed --noconfirm \
