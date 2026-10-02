@@ -89,6 +89,11 @@ sudo pacman -S --needed --noconfirm \
 sudo pacman -S --needed --noconfirm \
     swayimg
 
+# --- ToDo List ---
+sudo pacman -S --needed --noconfirm
+    task \
+    taskwarrior-tui
+
 # --- Virtualization / QEMU-KVM ---
 sudo pacman -S --needed --noconfirm \
     qemu-desktop \
